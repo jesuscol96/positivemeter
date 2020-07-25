@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Positivemeter</title>
+    <link rel="icon" type="image/png" href="img/logo.png"/>
+    <script src="js/libs/jquery.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type = "text/javascript" src = "js/libs/vue.js"></script>
+    <script type = "text/javascript" src = "js/libs/vue-router.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <div class = "row">
+            <div class = "col-sm-3" id = "request_counter">
+                <b>Texts analyzed: {{counter}}</b>
+            </div>
+            <div class = "col-sm-6 title">
+                <small>Welcome to the Positivemeter!</small>
+            </div>
+            <div class = "col-sm-3" style = "text-align:right;">
+                <a href="https://www.linkedin.com/in/jesus-colmenares-ostos/" class="fa fa-linkedin"></a>
+                <a href="https://github.com/jesuscol96" class="fa fa-github"></a>
+                <a href="https://twitter.com/JesusCo11" class="fa fa-twitter"></a>
+            </div>
+        </div>
+        <br>
+        <p>
+            Input any text no longer than 500 words for the positivemeter to read. Are you curious about how positivemeter works?
+            <a href="learn_more.html">Click here to learn more</a>
+        </p>
+        <div id="input_text">
+            <textarea class = "form-control" name="name" v-model = "text" placeholder="Type here..."></textarea>
+            <button v-on:click = "request_score" class="btn btn-primary">Score</button>
+        </div>
+        <div id="show_results">
+            <div v-bind:class = "[isSpinner ? spinnerclass : '']" id = "custom_spinner"></div>
+            <div class = "nice_center" id = "custom_msg">{{waiting_msg}}</div>
+            <div class = "nice_center" id = "custom_score">
+                <div class = "display-2">{{score_result}}</div>
+                <div v-if="score_seen" class = "display-4">positive!</div>
+                <img v-bind:src="result_img" alt="">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <b>Created by Jesús Colmenares. July 2020</b>
+    </footer>
+    <script type = "text/javascript" src = "js/main.js"></script>
+</body>
+</html>
