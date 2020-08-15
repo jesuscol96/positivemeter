@@ -29,8 +29,25 @@
         <a href="mainpage.html">Go back to Positivemeter</a>
         <br>
         <p>
-            Positivemeter is based on a convolutional neural network.
+            Positivemeter is based on a convolutional neural network, which was trained using the <a href="https://ai.stanford.edu/~amaas/data/sentiment/">IMDB sentiment classification dataset</a>.
         </p>
+        <h3>Network Architecture</h3>
+        <p>
+            The architecture is based on the covolutional model, though it implements other layers for word embedding & regularization in a sequential fashion.
+            The model used is based on the work of Mark Omernick and Francois Chollet, view it <a href="https://github.com/keras-team/keras-io/blob/master/examples/nlp/text_classification_from_scratch.py">here</a>.
+            <br><br>
+            The function of each layer is described as follow:
+            <ul>
+                <li><b>Input layer:</b> transforms text into a list of integers, where each integer is mapped to a unique word.</li>
+                <li><b>Embedding layer:</b> replaces each integer from the previous stage into a vector of dimension 128.</li>
+                <li><b>Dropout:</b> turns on/off each connection with the previous layer stochastically, helps with regularization.</li>
+                <li><b>Conv1D:</b> convolutional layer, it convolves the output of the preceding layer with a kernel of size 7 and adds a bias.</li>
+                <li><b>GlobalMaxPooling:</b> reduces complexity by taking the maximun value within a given window.</li>
+                <li><b>Dense:</b> fully connected layer. It helps with classification of abstract features.</li>
+            </ul>
+
+        </p>
+        <img src="img/model.png" alt="Model" style = "display: block; margin-left: auto; margin-right: auto">
     </div>
     <footer>
         <b>Created by Jesús Colmenares. July 2020</b>
